@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Title of the document</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/angular.min.js"></script>
+<script src="js/controller.js"></script>
+ <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="todoApp">
+<div class="container" ng-controller="TodoController">
+<div class="jumbotron">
+        <h1>{{ appTitle }}</h1>
+        <p>{{ appHeadline }}</p>
+</div>
+
+
+<section class="app-body">
+    <div class="row">
+        <div class="col-md-12">
+           
+        <section class="archive-control">
+            <span class="archive-text">{{ remaining() }} of {{ todos.length }} remaining</span>
+            <p style="margin:10px;">[ <a href="" data-ng-click="archive()">Remove Completed Items</a> ]</p>
+        </section>
+
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:50px;">
+        <div class="col-sx-12 col-md-8">
+              <ul class="unstyled">
+            <li data-ng-repeat="todo in todos track by $index">
+                <input type="checkbox" data-ng-model="todo.done">
+                <span class="done-{{ todo.done }}">{{ todo.text }}</span>
+                <span style="float:right;"> <a ng-click="delete($index)" href="#">delete</a></span>
+            </li>
+        </ul>
+        </div>
+        <div class="col-sx-12 col-md-4">
+            <form data-ng-submit="addTodo()" class="todo-form">
+            <input type="text" data-ng-model="todoText" placeholder="Enter new ToDo item" />
+            <br />
+            <input type="submit" value="Add Task" />
+        </form>
+        </div>
+    </div>
+      
+
+        
+</section><!-- END APP-BODY-->
+</div>
+</body>
+</html>
